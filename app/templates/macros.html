@@ -1,0 +1,41 @@
+<!--Display News Sources-->
+{% macro displayNewsSources(sources %}
+
+{% for source in sources %}
+
+<a href="/source/article/{{ source.id }}" class="btn btn-primary">{{ source.name }}</a>
+
+{% endfor %}
+
+{% endmacro %}
+
+<!--Display Articles from news source-->
+{% macro displayNewsSourceArticles(articles_list) %}
+
+{% for article in articles_list %}
+
+<div class="col-md-4">
+    <div class="card">
+        {% if article.urlToImage %}
+        <img src="{{ article.urlToImage }}" class="card-img-top" alt="{{ article.title }}">
+        {% endif %}
+
+        <div class="card-body">
+            <h6> {{ article.title }}</h6>
+            <p class="card-text">{{ article.description [:110]}}</p>
+            <div class="d-flex justify-content-around">
+                <div>
+                    <p><strong><span class="badge rounded-pill bg-warning text-dark"><small>{{ article.publishedAt }}</small></span></strong></p>
+                </div>
+                <div class="text-center">
+                    <a href="{{ article.url }}" target="_blank" class="color-main"><small>Read More <i
+                                class="fa fa-arrow-right"></i></small> </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endmacro %}
