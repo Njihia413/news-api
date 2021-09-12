@@ -1,5 +1,5 @@
 <!--Display News Sources-->
-{% macro displayNewsSources(sources %}
+{% macro displayNewsSources(sources) %}
 
 {% for source in sources %}
 
@@ -14,7 +14,7 @@
 
 {% for article in articles_list %}
 
-<div class="col-md-4">
+<div class="col-md-6">
     <div class="card">
         {% if article.urlToImage %}
         <img src="{{ article.urlToImage }}" class="card-img-top" alt="{{ article.title }}">
