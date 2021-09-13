@@ -1,4 +1,4 @@
-<!doctype html>
+<!Doctype html>
 <html lang="en">
 
 <head>
@@ -14,13 +14,18 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     {% if title %}
-    <title>Hot News - {{ title }}</title>
+    <title>Top News - {{ title }}</title>
     {% else %}
-    <title>Welcome to Hot News</title>
+    <title>Welcome to Top News</title>
     {% endif %}
 </head>
 
 <body>
+    <!--Navbar-->
+    {% block navbar %}
+    {% include 'navbar.html' %}
+    {% endblock %}
+
     <!-- Block Content -->
     {% block content %}
 

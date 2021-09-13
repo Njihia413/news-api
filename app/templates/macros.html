@@ -3,7 +3,11 @@
 
 {% for source in sources %}
 
-<a href="/source/article/{{ source.id }}" class="btn btn-primary">{{ source.name }}</a>
+<div class="col-md-3">
+    <div class="card">
+        <a href="/source/articles/{{ source.id }}">{{ source.name }}</a>
+    </div>
+</div>
 
 {% endfor %}
 
