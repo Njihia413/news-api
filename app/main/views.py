@@ -1,9 +1,9 @@
 from flask import render_template
-from app import app
-from .request import get_sources, get_articles, get_articles_from_source, get_articles_depending_on_category
+from . import main
+from ..requests import get_sources, get_articles, get_articles_from_source, get_articles_depending_on_category
 
 #Views
-@app.route('/')
+@main.route('/')
 def index():
     '''
     View root page that returns the index page and its data
@@ -29,7 +29,7 @@ def index():
     cnn = cnn,
     google = google)
 
-@app.route('/source/articles/<source_id>')
+@main.route('/source/articles/<source_id>')
 def articles(source_id):
     '''
     View articles page function that returns the articles page from a source
@@ -42,7 +42,7 @@ def articles(source_id):
         title = title,
         articles = articles)
 
-@app.route('/business')
+@main.route('/business')
 def business():
     '''
     View business page function that returns the business page and its data
@@ -55,7 +55,7 @@ def business():
                            )
 
 
-@app.route('/sports')
+@main.route('/sports')
 def sports():
     '''
     View sports page function that returns the sports page and its data
@@ -68,7 +68,7 @@ def sports():
                            )
 
 
-@app.route('/entertainment')
+@main.route('/entertainment')
 def entertainment():
     '''
     View entertainment page function that returns the entertainment page and its data
@@ -81,7 +81,7 @@ def entertainment():
                            )
 
 
-@app.route('/technology')
+@main.route('/technology')
 def technology():
     '''
     View technology page function that returns the technology page and its data
@@ -94,7 +94,7 @@ def technology():
                            )
 
 
-@app.route('/health')
+@main.route('/health')
 def health():
     '''
     View health page function that returns the health page and its data
@@ -107,7 +107,7 @@ def health():
                            )
 
 
-@app.route('/science')
+@main.route('/science')
 def science():
     '''
     View science page function that returns the science page and its data

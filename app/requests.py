@@ -1,19 +1,26 @@
-from app.models import articles
 from app import app
 import urllib.request,json
-from .models import sources, articles
+from .models import Sources, Articles 
+import os
 
-Sources = sources.Sources
-Articles = articles.Articles
+#Sources = sources.Sources
+#Articles = articles.Articles
 
 #Getting api key
-api_key = app.config['NEWS_API_KEY']
+api_key = '3f35e79126c845a6a44ae14e6c47ba4a'
 
 #Getting the news source base url
-sources_base_url = app.config["NEWS_SOURCE_API_BASE_URL"]
+sources_base_url = None
 
 #Getting the news articles base url
-articles_base_url = app.config["NEWS_ARTICLES_API_BASE_URL"]
+articles_base_url = None
+
+def configure_request(app):
+    global api_key,sources_base_url,articles_base_url
+    api_key = app.config['NEWS_API_KEY']
+    sources_base_url = app.config["NEWS_SOURCE_API_BASE_URL"]
+    articles_base_url = app.config["NEWS_ARTICLES_API_BASE_URL"]
+
 
 def get_sources():
     '''
@@ -36,10 +43,8 @@ def get_sources():
 def process_sources_results(sources_list):
     '''
     Function that processes the sources results and transforms them into a list of objects
-
     Args:
         sources_list: A list of dictionaries that contain sources details
-
     Returns:
         sources_results: A list of sources objects
     '''
@@ -114,10 +119,8 @@ def get_articles_depending_on_category(category): #Get news depending on categor
 def process_articles_results(articles_list):
     '''
     Function that processes the articles results and transform them into a list of objects
-
     Args:
         articles_list: A list of dictionaries that contain articles details
-
     Returns:
         articles_results: A list of articles objects
     '''
@@ -136,5 +139,3 @@ def process_articles_results(articles_list):
             articles_results.append(articles_object)
 
     return articles_results
-
-    
